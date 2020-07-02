@@ -3,7 +3,7 @@ import React from "react";
 const FeedPreviewError = ({ checkIfUrlIsValid }) => {
   return (
     <div className="feed-preview-error">
-      <p className="feed-preview-error__p">Some error occured - try again!</p>
+      <p className="feed-preview-error__p">Sorry some error occured</p>
       <button
         className="feed-preview-error__button"
         onClick={checkIfUrlIsValid}
