@@ -1,0 +1,15 @@
+.feed-preview {
+  width: 100%;
+  max-width: 50rem;
+  margin: 0 auto;
+  box-shadow: $box-shadow-primary;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: $color-white;
+
+    padding: 1rem 2rem;
+  }
+}
