@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <HomePage>
-        <FeedPreview url="test" />
+        <FeedPreview url="https://www.gamespot.com/feeds/mashup/" />
       </HomePage>
     </div>
   );
