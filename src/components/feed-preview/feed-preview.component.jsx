@@ -43,9 +43,9 @@ const FeedPreview = ({ url }) => {
 
   const filterArrayOfItems = () => {
     const results = responseArrayOfItems.filter((item) =>
-    item.title.toLowerCase().includes(inputValue.toLowerCase())
-  );
-  setFilteredArrayOfItems(results);
+      item.title.toLowerCase().includes(inputValue.toLowerCase())
+    );
+    setFilteredArrayOfItems(results);
   };
 
   useEffect(() => {
@@ -56,29 +56,37 @@ const FeedPreview = ({ url }) => {
     filterArrayOfItems();
   }, [inputValue]);
 
+  console.log("responseArrayOfItems: ", responseArrayOfItems);
+
   return (
     <div className="feed-preview">
       {error ? (
         <FeedPreviewError checkIfUrlIsValid={checkIfUrlIsValid} />
       ) : (
         <div className="feed-preview__content">
-          <input
-            value={inputValue}
-            onChange={handleChange}
-            type="text"
-            className="feed-preview__content__search"
-          />
+          <div className="feed-preview__content__search">
+            <span className="feed-preview__content__search__span">Search:</span>
+            <input
+              value={inputValue}
+              onChange={handleChange}
+              type="text"
+              className="feed-preview__content__search__input"
+            />
+          </div>
 
           {/* {isValid ? (
             <p>Przekazany jest valid</p>
           ) : (
             <p>Przekazany jest chujowy</p>
           )} */}
-          {filteredArrayOfItems && filteredArrayOfItems.length !== 0
-            ? filteredArrayOfItems.map((item) => (
-                <FeedPreviewCard key={item.guid} itemData={item} />
-              ))
-            : null}
+
+          <div className="feed-preview__content__grid">
+            {filteredArrayOfItems && filteredArrayOfItems.length !== 0
+              ? filteredArrayOfItems.map((item) => (
+                  <FeedPreviewCard key={item.guid} itemData={item} />
+                ))
+              : null}
+          </div>
         </div>
       )}
     </div>

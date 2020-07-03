@@ -1,7 +1,7 @@
 .feed-preview {
   width: 100%;
-  max-width: 50rem;
-  margin: 0 auto;
+  max-width: 1200px;
+  margin: 2rem auto;
   box-shadow: $box-shadow-primary;
 
   &__content {
@@ -10,6 +10,36 @@
     justify-content: center;
     background-color: $color-white;
 
-    padding: 1rem 2rem;
+    &__grid {
+      padding: 2rem 0;
+
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+      justify-items: center;
+      align-items: start;
+      grid-gap: 3rem;
+    }
+
+    &__search {
+      width: 100%;
+      margin-bottom: 2rem;
+      padding: 2rem 0;
+      box-shadow: $box-shadow-bottom;
+      @include flex-center-row;
+
+      &__span {
+        font-size: 1.8rem;
+        font-weight: 500;
+        letter-spacing: 0.1rem;
+        margin-right: 1rem;
+      }
+
+      &__input {
+        padding: 0.5rem 0.8rem;
+        border: 1px solid #000;
+        outline: none;
+      }
+    }
   }
 }

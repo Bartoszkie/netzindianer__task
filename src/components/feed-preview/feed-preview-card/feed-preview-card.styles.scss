@@ -1,0 +1,182 @@
+.feed-preview-card {
+  width: 100%;
+  width: 30rem;
+  height: 45rem;
+  margin: 1rem 1.2rem;
+
+  box-shadow: $box-shadow-primary;
+
+  @include flex-center-column;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+
+    &:hover {
+      .feed-preview-card__content__header {
+        margin-top: -10px;
+      }
+
+      .feed-preview-card__content__main {
+        height: 55%;
+      }
+
+      img {
+        transform: translatey(-10px) translatex(-5px) scale(1.05);
+      }
+    }
+
+    &__header {
+      overflow: hidden;
+      width: 100%;
+      height: 40%;
+      //   background: #ddd;
+      position: absolute;
+      top: 0;
+      -webkit-transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;
+      -moz-transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;
+      -ms-transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;
+      -o-transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;
+      transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;
+
+      & > img {
+        max-width: 100%;
+        height: auto;
+        transition: ease-in-out 600ms;
+      }
+    }
+
+    &__main {
+      width: 100%;
+      height: 60%;
+      position: absolute;
+      bottom: 0;
+
+      background: #fff;
+      background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      -webkit-transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;
+      -moz-transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;
+      -ms-transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;
+      -o-transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;
+      transition: cubic-bezier(0.68, -0.55, 0.27, 01.55) 320ms;
+      cursor: pointer;
+
+      &__col {
+        height: 100%;
+        width: 100%;
+
+        padding: 1rem 2rem;
+        @include flex-center-column;
+
+        &__title {
+          width: 100%;
+
+          & > span {
+            width: 100%;
+            text-align: left;
+            padding: 0.5rem 1rem;
+            font-weight: 700;
+            font-size: 1.8rem;
+          }
+
+          & > p {
+            width: 100%;
+            text-align: left;
+            padding: 0.5rem 1rem;
+            font-size: 1.4rem;
+            font-weight: 400;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+          }
+        }
+
+        &__date {
+          display: flex;
+          width: 100%;
+          justify-content: center;
+          align-items: center;
+
+          padding: 1rem 0;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+          & > span {
+            text-align: left;
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            color: rgba(51, 51, 51, 0.61);
+            font-size: 1.4rem;
+          }
+
+          & > i {
+            text-align: left;
+            padding: 0.5rem 1rem;
+            font-size: 1.4rem;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+  }
+
+  &__goto {
+    margin: 3rem 0 0;
+    padding: 1rem 1.5rem;
+    width: 100%;
+    max-width: 50%;
+    text-align: center;
+
+    background-color: transparent;
+
+    border: 1px solid rgba(0, 0, 0, 0.2);
+
+    transition: 0.2s ease-in-out all;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    & > a {
+      text-decoration: none;
+      color: #000;
+      font-size: 1.2rem;
+      transition: 0.2s ease-in-out all;
+      transform: translateX(0px);
+    }
+
+    & > svg {
+      color: #fff;
+      visibility: hidden;
+      font-size: 1.6rem;
+      transition: 0.2s ease-in-out all;
+
+      position: absolute;
+      right: 10px;
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.555);
+
+      border: 1px solid transparent;
+      max-width: 60%;
+      box-shadow: $box-shadow-primary;
+
+      & > a {
+        color: #fff;
+        transform: translateX(-20px);
+      }
+
+      & > svg {
+        color: #fff;
+        visibility: unset;
+      }
+    }
+  }
+}
