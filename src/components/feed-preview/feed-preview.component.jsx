@@ -75,7 +75,7 @@ const FeedPreview = ({ url }) => {
           {/* {isValid ? (
             <p>Przekazany jest valid</p>
           ) : (
-            <p>Przekazany jest chujowy</p>
+            <p>Przekazany jest nieprawidłowy</p>
           )} */}
 
           <div className="feed-preview__content__grid">
