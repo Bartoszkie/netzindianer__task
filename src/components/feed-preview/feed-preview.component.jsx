@@ -11,7 +11,7 @@ import { fetchDataThroughParser } from "../../axios/feed-preview-requests/feed-p
 const FeedPreview = ({ url }) => {
   const [isValid, setIsValid] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(true);
   const [responseArrayOfItems, setResponseArrayOfItems] = useState([]);
   const [filteredArrayOfItems, setFilteredArrayOfItems] = useState([]);
 
@@ -31,9 +31,9 @@ const FeedPreview = ({ url }) => {
     if (responseFromParser.status !== 200) {
       setError(true);
     } else {
+      setError(false);
       setResponseArrayOfItems(responseFromParser.data.items);
       setFilteredArrayOfItems(responseFromParser.data.items);
-      setError(false);
     }
   };
 
@@ -55,8 +55,6 @@ const FeedPreview = ({ url }) => {
   useEffect(() => {
     filterArrayOfItems();
   }, [inputValue]);
-
-  console.log("responseArrayOfItems: ", responseArrayOfItems);
 
   return (
     <div className="feed-preview">

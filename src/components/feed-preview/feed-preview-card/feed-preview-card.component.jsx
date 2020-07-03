@@ -1,16 +1,14 @@
 import React from "react";
-import Parser from "html-react-parser";
+// import Parser from "html-react-parser";
 
 import { BsFillReplyFill } from "react-icons/bs";
 
 const FeedPreviewCard = ({ itemData }) => {
-  //   console.log("Response aray from card: ", itemData);
-
   return (
     <div className="feed-preview-card">
       <div className="feed-preview-card__content">
         <header className="feed-preview-card__content__header">
-          <img src={itemData.enclosure.link} alt="feed-image" />
+          <img src={itemData.enclosure.link} alt="feed" />
         </header>
         <div className="feed-preview-card__content__main">
           <div className="feed-preview-card__content__main__col">
