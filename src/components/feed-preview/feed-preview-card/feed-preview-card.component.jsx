@@ -27,9 +27,6 @@ const FeedPreviewCard = ({ itemData }) => {
               <BsFillReplyFill />
             </div>
           </div>
-          {/* <div className="feed-preview-card__content__main__col">
-            {Parser(itemData.description)}
-          </div> */}
         </div>
       </div>
     </div>
