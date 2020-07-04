@@ -3,7 +3,7 @@ import { schema } from "./feed-preview.utils";
 
 //Components
 import FeedPreviewCard from "./feed-preview-card/feed-preview-card.component";
-import FeedPreviewError from "./feed-preview-error/feed-preview-error.component";
+import FeedPreviewErrorComponent from "./feed-preview-error/feed-preview-error-class.component";
 
 //axios
 import { fetchDataThroughParser } from "../../axios/feed-preview-requests/feed-preview-requests";
@@ -11,13 +11,12 @@ import { fetchDataThroughParser } from "../../axios/feed-preview-requests/feed-p
 const FeedPreview = ({ url }) => {
   const [isValid, setIsValid] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const [error, setError] = useState(true);
+  const [error, setError] = useState(false);
   const [responseArrayOfItems, setResponseArrayOfItems] = useState([]);
   const [filteredArrayOfItems, setFilteredArrayOfItems] = useState([]);
 
   const checkIfUrlIsValid = async () => {
     const isValidSchema = await schema.isValid(url);
-
     if (isValidSchema) {
       setIsValid(true);
       fetchData();
@@ -59,25 +58,38 @@ const FeedPreview = ({ url }) => {
   return (
     <div className="feed-preview">
       {error ? (
-        <FeedPreviewError checkIfUrlIsValid={checkIfUrlIsValid} />
+        <FeedPreviewErrorComponent>
+          <FeedPreviewErrorComponent.Title>
+            Sorry, some error occured :(
+          </FeedPreviewErrorComponent.Title>
+          <FeedPreviewErrorComponent.Button>
+            <p>Try Again!</p>
+          </FeedPreviewErrorComponent.Button>
+        </FeedPreviewErrorComponent>
+      ) : !isValid ? (
+        <FeedPreviewErrorComponent>
+          <FeedPreviewErrorComponent.Title>
+            Passed url is invalid
+          </FeedPreviewErrorComponent.Title>
+        </FeedPreviewErrorComponent>
       ) : (
         <div className="feed-preview__content">
           <div className="feed-preview__content__search">
-            <span className="feed-preview__content__search__span">Search:</span>
+            <label
+              htmlFor="search"
+              className="feed-preview__content__search__label"
+            >
+              Search:
+            </label>
             <input
+              id="search"
+              name="search"
               value={inputValue}
               onChange={handleChange}
               type="text"
               className="feed-preview__content__search__input"
             />
           </div>
-
-          {/* {isValid ? (
-            <p>Przekazany jest valid</p>
-          ) : (
-            <p>Przekazany jest nieprawidłowy</p>
-          )} */}
-
           <div className="feed-preview__content__grid">
             {filteredArrayOfItems && filteredArrayOfItems.length !== 0
               ? filteredArrayOfItems.map((item) => (
