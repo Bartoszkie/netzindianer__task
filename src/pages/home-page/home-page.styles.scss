@@ -1,0 +1,5 @@
+.home-page {
+  flex: 1;
+
+  @include flex-center-row;
+}
