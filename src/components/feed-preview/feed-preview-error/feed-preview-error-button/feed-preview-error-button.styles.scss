@@ -1,0 +1,50 @@
+.feed-preview-error__content__button {
+  width: 100%;
+  max-width: 12rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 1.2rem 1.5rem;
+  cursor: pointer;
+
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: transparent;
+  outline: none;
+  transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) all;
+
+  position: relative;
+
+  & > p {
+    color: #000;
+    transform: translateX(0px);
+    transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) all;
+  }
+
+  & > svg {
+    color: transparent;
+    visibility: hidden;
+    position: absolute;
+    right: 10px;
+    transform: rotate(0);
+    transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) all;
+  }
+
+  &:hover {
+    max-width: 14rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: $box-shadow-primary;
+
+    & > svg {
+      color: #fff;
+      visibility: unset;
+      transform: rotate(360deg);
+    }
+
+    & > p {
+      color: #fff;
+      transform: translateX(-20px);
+    }
+  }
+}

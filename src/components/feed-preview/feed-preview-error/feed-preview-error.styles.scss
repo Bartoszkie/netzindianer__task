@@ -1,0 +1,10 @@
+.feed-preview-error {
+  width: 100%;
+
+  @include flex-center-row;
+
+  &__content {
+    @include flex-center-column;
+    padding: 2rem 1rem;
+  }
+}
