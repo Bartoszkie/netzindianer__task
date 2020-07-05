@@ -4,6 +4,10 @@ const staticUrl = "https://api.rss2json.com/v1/api.json?rss_url=";
 export const fetchDataThroughParser = (url) => {
   return axios
     .get(`${staticUrl}${url}`)
-    .then((response) => response)
-    .catch((error) => error);
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      return error;
+    });
 };

@@ -4,12 +4,14 @@ import { schema } from "./feed-preview.utils";
 //Components
 import FeedPreviewCard from "./feed-preview-card/feed-preview-card.component";
 import FeedPreviewErrorComponent from "./feed-preview-error/feed-preview-error-class.component";
+import Spinner from "../spinner/spinner.component";
 
 //axios
 import { fetchDataThroughParser } from "../../axios/feed-preview-requests/feed-preview-requests";
 
 const FeedPreview = ({ url }) => {
   const [isValid, setIsValid] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState(false);
   const [responseArrayOfItems, setResponseArrayOfItems] = useState([]);
@@ -27,9 +29,12 @@ const FeedPreview = ({ url }) => {
 
   const fetchData = async () => {
     const responseFromParser = await fetchDataThroughParser(url);
+    setIsLoading(true);
     if (responseFromParser.status !== 200) {
       setError(true);
+      setIsLoading(false);
     } else {
+      setIsLoading(false);
       setError(false);
       setResponseArrayOfItems(responseFromParser.data.items);
       setFilteredArrayOfItems(responseFromParser.data.items);
@@ -57,7 +62,15 @@ const FeedPreview = ({ url }) => {
 
   return (
     <div className="feed-preview">
-      {error ? (
+      {isLoading ? (
+        <Spinner />
+      ) : !isValid ? (
+        <FeedPreviewErrorComponent>
+          <FeedPreviewErrorComponent.Title>
+            Passed url is invalid
+          </FeedPreviewErrorComponent.Title>
+        </FeedPreviewErrorComponent>
+      ) : error ? (
         <FeedPreviewErrorComponent>
           <FeedPreviewErrorComponent.Title>
             Sorry, some error occured :(
@@ -66,13 +79,7 @@ const FeedPreview = ({ url }) => {
             <p>Try Again!</p>
           </FeedPreviewErrorComponent.Button>
         </FeedPreviewErrorComponent>
-      ) : !isValid ? (
-        <FeedPreviewErrorComponent>
-          <FeedPreviewErrorComponent.Title>
-            Passed url is invalid
-          </FeedPreviewErrorComponent.Title>
-        </FeedPreviewErrorComponent>
-      ) : (
+      ) : filteredArrayOfItems.length !== 0 ? (
         <div className="feed-preview__content">
           <div className="feed-preview__content__search">
             <label
@@ -91,14 +98,14 @@ const FeedPreview = ({ url }) => {
             />
           </div>
           <div className="feed-preview__content__grid">
-            {filteredArrayOfItems && filteredArrayOfItems.length !== 0
+            {filteredArrayOfItems
               ? filteredArrayOfItems.map((item) => (
                   <FeedPreviewCard key={item.guid} itemData={item} />
                 ))
               : null}
           </div>
         </div>
-      )}
+      ) : null}
     </div>
   );
 };
