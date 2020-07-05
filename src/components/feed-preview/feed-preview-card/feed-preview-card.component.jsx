@@ -1,6 +1,4 @@
 import React from "react";
-// import Parser from "html-react-parser";
-
 import { BsFillReplyFill } from "react-icons/bs";
 
 const FeedPreviewCard = ({ itemData }) => {
