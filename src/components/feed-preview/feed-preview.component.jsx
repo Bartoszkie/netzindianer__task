@@ -79,7 +79,7 @@ const FeedPreview = ({ url }) => {
             <p>Try Again!</p>
           </FeedPreviewErrorComponent.Button>
         </FeedPreviewErrorComponent>
-      ) : filteredArrayOfItems.length !== 0 ? (
+      ) : filteredArrayOfItems ? (
         <div className="feed-preview__content">
           <div className="feed-preview__content__search">
             <label
@@ -98,7 +98,7 @@ const FeedPreview = ({ url }) => {
             />
           </div>
           <div className="feed-preview__content__grid">
-            {filteredArrayOfItems
+            {filteredArrayOfItems && filteredArrayOfItems.length !== 0 
               ? filteredArrayOfItems.map((item) => (
                   <FeedPreviewCard key={item.guid} itemData={item} />
                 ))
