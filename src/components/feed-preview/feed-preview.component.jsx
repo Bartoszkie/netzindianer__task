@@ -61,7 +61,7 @@ const FeedPreview = ({ url }) => {
   }, [inputValue]);
 
   return (
-    <div className="feed-preview">
+    <div data-testid="feed-preview" className="feed-preview">
       {isLoading ? (
         <Spinner />
       ) : !isValid ? (
@@ -98,7 +98,7 @@ const FeedPreview = ({ url }) => {
             />
           </div>
           <div className="feed-preview__content__grid">
-            {filteredArrayOfItems && filteredArrayOfItems.length !== 0 
+            {filteredArrayOfItems && filteredArrayOfItems.length !== 0
               ? filteredArrayOfItems.map((item) => (
                   <FeedPreviewCard key={item.guid} itemData={item} />
                 ))
